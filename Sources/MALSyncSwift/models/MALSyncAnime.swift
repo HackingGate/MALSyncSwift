@@ -32,7 +32,7 @@ public struct MALSyncMALSites: Codable {
 // https://swiftsenpai.com/swift/decode-dynamic-keys-json/
 public struct MALSyncMALSite<T: Codable>: Codable {
 
-    var array: [T]
+    public var array: [T]
 
     private struct DynamicCodingKeys: CodingKey {
 
@@ -61,14 +61,25 @@ public struct MALSyncMALSite<T: Codable>: Codable {
     }
 }
 
-public struct MALSyncMALSiteType1: Codable {
-    public let identifier: String
+public struct MALSyncMALSiteType1: Codable, Identifiable {
+    public let id: String // identifier
     public let type: String
     public let page: String
     public let title: String
     public let url: String
     public let image: String
     public let malId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        // Anime
+        case id = "identifier"
+        case type = "type"
+        case page = "page"
+        case title = "title"
+        case url = "url"
+        case image = "image"
+        case malId = "malId"
+    }
 }
 
 public struct MALSyncMALSiteType2: Codable {
