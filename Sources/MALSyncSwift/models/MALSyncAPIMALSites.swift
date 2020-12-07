@@ -1,5 +1,5 @@
 //
-//  MALSyncAnime.swift
+//  MALSyncAPIMALSites.swift
 //  
 //
 //  Created by HG on 2020/12/05.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MALSyncMALSites: Codable {
+public struct MALSyncAPIMALSites: Codable {
     public let nineAnime: MALSyncMALSite<MALSyncMALSiteType1>?
     public let aniwatch: MALSyncMALSite<MALSyncMALSiteType1>?
     public let gogoanime: MALSyncMALSite<MALSyncMALSiteType1>?
