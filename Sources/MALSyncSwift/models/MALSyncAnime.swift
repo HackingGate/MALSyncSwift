@@ -67,7 +67,7 @@ public struct MALSyncMALSiteType1: Codable, Identifiable {
     public let page: String
     public let title: String
     public let url: String
-    public let image: String
+    public let image: String?
     public let malId: Int
     
     enum CodingKeys: String, CodingKey {
@@ -84,7 +84,7 @@ public struct MALSyncMALSiteType1: Codable, Identifiable {
 
 public struct MALSyncMALSiteType2: Codable {
     public let mal: [String: String]
-    public let image: String
+    public let image: String?
     public let title: String
     public let url: String
     public let malUrl: String
