@@ -5,8 +5,6 @@
 //  Created by HG on 2020/12/05.
 //
 
-import Foundation
-
 extension MALSyncAPIService {
     // https://api.malsync.moe/mal/anime/1
     public func loadMALAnime<T: Codable>(id: Int,
