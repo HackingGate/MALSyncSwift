@@ -1,4 +1,5 @@
 # MALSyncSwift
+[![SwiftLint](https://github.com/HackingGate/MALSyncSwift/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/HackingGate/MALSyncSwift/actions/workflows/swiftlint.yml)
 
 MALSync Swift wrapper
 
