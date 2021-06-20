@@ -14,7 +14,7 @@ public struct MALSyncAPIMAL: Codable {
     public let url: String
     public let image: String
     public let sites: MALSyncAPIMALSites
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case type = "type"

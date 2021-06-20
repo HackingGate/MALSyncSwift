@@ -69,7 +69,7 @@ public struct MALSyncMALSiteType1: Codable, Identifiable {
     public let url: String
     public let image: String?
     public let malId: Int
-    
+
     enum CodingKeys: String, CodingKey {
         // Anime
         case id = "identifier"
