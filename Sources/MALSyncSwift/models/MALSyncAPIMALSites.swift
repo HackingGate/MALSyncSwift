@@ -53,8 +53,13 @@ public struct MALSyncMALSite<T: Codable>: Codable {
         var tempArray = [T]()
 
         for key in container.allKeys {
-            let decodedObject = try container.decode(T.self, forKey: DynamicCodingKeys(stringValue: key.stringValue)!)
-            tempArray.append(decodedObject)
+            do {
+                let decodedObject = try container.decode(T.self, forKey: DynamicCodingKeys(stringValue: key.stringValue)!)
+                tempArray.append(decodedObject)
+            } catch {
+                let decodedObject = try container.decode(T.self, forKey: DynamicCodingKeys(stringValue: key.stringValue)!)
+                tempArray.append(decodedObject)
+            }
         }
 
         array = tempArray
@@ -68,7 +73,8 @@ public struct MALSyncMALSiteType1: Codable, Identifiable {
     public let title: String
     public let url: String
     public let image: String?
-    public let malId: Int
+    public let malId: Int?
+    public let aniId: Int?
 
     enum CodingKeys: String, CodingKey {
         // Anime
@@ -79,6 +85,37 @@ public struct MALSyncMALSiteType1: Codable, Identifiable {
         case url = "url"
         case image = "image"
         case malId = "malId"
+        case aniId = "aniId"
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            // Try decode with Int
+            let intID = try container.decode(Int.self, forKey: .id)
+            id = String(intID)
+        } catch {
+            id = try container.decode(String.self, forKey: .id)
+        }
+        type = try container.decode(String.self, forKey: .type)
+        page = try container.decode(String.self, forKey: .page)
+        title = try container.decode(String.self, forKey: .title)
+        url = try container.decode(String.self, forKey: .url)
+        do {
+            image = try container.decode(String.self, forKey: .image)
+        } catch {
+            image = nil
+        }
+        do {
+            malId = try container.decode(Int.self, forKey: .malId)
+        } catch {
+            malId = nil
+        }
+        do {
+            aniId = try container.decode(Int.self, forKey: .aniId)
+        } catch {
+            aniId = nil
+        }
     }
 }
 
